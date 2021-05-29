@@ -5,6 +5,13 @@ function greetView() {
 
 export { greetView };
 
+class MainView
+{
+	constructor() {
+		
+	}
+}
+
 function mainTemplate(navigation, pageName, userEmail, page, pageBody) {
     return String.raw`
         <div id="pageHeader">

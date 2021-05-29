@@ -5,4 +5,9 @@ function greet() {
     greetView();
 }
 
+class MainController
+{
+    
+}
+
 export { greet };
