@@ -1,7 +1,7 @@
 
-class Main
+class Register
 {
-    constructor(app) {
+    cconstructor(app) {
         this._app = app;
     }
 
@@ -10,4 +10,4 @@ class Main
     }
 }
 
-export { Main };
+export { Register };

@@ -68,7 +68,7 @@ div#user div.odkazVzhled{
     float: right;
 }
 
-.odkazy
+nav li
 {
     width: 150px;
     margin: 10px;
@@ -86,7 +86,7 @@ nav ul {
     padding: 0;
 }
 
-a.navOdkaz {
+nav a {
     display: block;
     background-color: #070f3d;
     color: white;
@@ -98,12 +98,12 @@ a.navOdkaz {
     font-size:20px;
 }
 
-a.navOdkaz:hover {
+nav a:hover {
     background-color: white;
     color: #070f3d;
 }
 
-a.navOdkaz#strankaVybrana {
+nav a#strankaVybrana {
     background-color: white;
     color: #10111f;
     transition: none;
@@ -243,9 +243,6 @@ td form{
 /*
     Formulare
 */
-
-form {
-}
 
 form label {
     display:block;

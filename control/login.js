@@ -1,5 +1,5 @@
 
-class Main
+class Login
 {
     constructor(app) {
         this._app = app;
@@ -10,4 +10,4 @@ class Main
     }
 }
 
-export { Main };
+export { Login };
