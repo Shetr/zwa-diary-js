@@ -19,7 +19,7 @@ class Router
             }
         }
         if(!routeFound) {
-            routeDefault();
+            this.routeDefault();
         }
     }
 
