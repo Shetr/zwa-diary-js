@@ -29,10 +29,26 @@ class Router
         }
     }
 
+    routeTo(newRoute) {
+        let routeFound = false;
+        for (const [routeName, routeControl] of Object.entries(this._routes)) {
+            if(routeName == newRoute) {
+                routeFound = true;
+            }
+        }
+        if(!routeFound) {
+            console.log("route %s does not exist", newRoute);
+            return;
+        }
+        this._actualRoute = newRoute;
+        window.location.hash = "#" + newRoute;
+        this._routes[newRoute].init();
+    }
+
     routeDefault() {
-        this._defaultRoute.control.init();
-        window.location.hash = "#" + this._defaultRoute.name;
         this._actualRoute = this._defaultRoute.name;
+        window.location.hash = "#" + this._defaultRoute.name;
+        this._defaultRoute.control.init();
     }
 }
 

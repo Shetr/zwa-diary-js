@@ -5,11 +5,11 @@ class LoggedOut extends Controller
 {
     constructor(app) {
         super(app);
-        this._view = new LoggedOutView();
+        this._loggedOutView = new LoggedOutView();
     }
 
     init() {
-        this._view.init(this._app.router.getActualRoute());
+        this._loggedOutView.init(this._app.router.getActualRoute());
         return super.init();
     }
 }

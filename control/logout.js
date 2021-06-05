@@ -7,7 +7,8 @@ class Logout extends LoggedIn
     }
 
     init() {
-        return super.init();
+        let progress = super.init();
+        return progress;
     }
 }
 

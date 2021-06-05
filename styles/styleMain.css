@@ -146,7 +146,7 @@ footer {
 }
 
 /*
-    Kalendář
+    Calendar
 */
 
 table {
@@ -241,7 +241,7 @@ td form{
 }
 
 /*
-    Formulare
+    Forms
 */
 
 form label {
@@ -257,7 +257,7 @@ form p {
     margin: 10px;
     color: white;
 }
-form p.chyba {
+form p.error {
     color: #ff4e00;
 }
 
@@ -271,7 +271,7 @@ form label input.radioBut
 {
     display: inline;
 }
-form label input.chyba {
+form label input.error {
     background-color: #ff4e00;
 }
 
@@ -363,6 +363,6 @@ form textarea {
     cursor: pointer;
 }
 
-.povine {
+.mandatory {
     color: #ff4e00;
 }

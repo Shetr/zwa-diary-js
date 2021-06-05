@@ -31,10 +31,14 @@ class App
         this.router = new Router(routes, defaultRoute);
         this.router.route();
 
-        this.storage = new AppStorage("users", [User]);
-        this.storage.load();
+        this._users = new AppStorage("users", [User]);
+        this._users.load();
 
         this.user = null;
+    }
+
+    getUsers() {
+        return this._users;
     }
     
 }

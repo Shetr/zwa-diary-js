@@ -5,11 +5,11 @@ class LoggedIn extends Controller
 {
     constructor(app) {
         super(app);
-        this._view = new LoggedInView();
+        this._loggedInView = new LoggedInView();
     }
 
     init() {
-        this._view.init(this._app.router.getActualRoute());
+        this._loggedInView.init(this._app.router.getActualRoute());
         return super.init();
     }
 }

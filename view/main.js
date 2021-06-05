@@ -1,16 +1,22 @@
 
-function greetView() {
-    console.log("hello from view");
-}
-
-export { greetView };
-
 class MainView
 {
-	constructor() {
-		
-	}
+    constructor(){
+        this._headlineEl = document.querySelector("header h1");
+        this._mainEl = document.querySelector("main");
+
+        this._headline = "Diary / Notebook";
+    }
+
+    init() {
+        this._headlineEl.innerHTML = this._headline;
+        document.title = this._headline;
+        
+        this._mainEl.innerHTML = "";
+    }
 }
+
+export { MainView };
 
 function mainTemplate(navigation, pageName, userEmail, page, pageBody) {
     return String.raw`
