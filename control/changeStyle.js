@@ -1,12 +1,13 @@
+import { LoggedIn } from "./loggedIn.js";
 
-class ChangeStyle
+class ChangeStyle extends LoggedIn
 {
     constructor(app) {
-        this._app = app;
+        super(app);
     }
 
     init() {
-        return true;
+        return super.init();
     }
 }
 

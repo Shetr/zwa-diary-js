@@ -103,7 +103,7 @@ nav a:hover {
     color: #070f3d;
 }
 
-nav a#strankaVybrana {
+nav a#pageSelected {
     background-color: white;
     color: #10111f;
     transition: none;

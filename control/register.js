@@ -1,12 +1,13 @@
+import { LoggedOut } from "./loggedOut.js";
 
-class Register
+class Register extends LoggedOut
 {
-    cconstructor(app) {
-        this._app = app;
+    constructor(app) {
+        super(app);
     }
 
     init() {
-        return true;
+        return super.init();
     }
 }
 

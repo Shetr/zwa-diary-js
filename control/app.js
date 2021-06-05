@@ -27,10 +27,14 @@ class App
             name: "main",
             control: routes.main
         };
-        this._router = new Router(routes, defaultRoute);
-        this._router.route();
-        this._storage = new AppStorage("users", [User]);
-        this._storage.load();
+
+        this.router = new Router(routes, defaultRoute);
+        this.router.route();
+
+        this.storage = new AppStorage("users", [User]);
+        this.storage.load();
+
+        this.user = null;
     }
     
 }

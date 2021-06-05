@@ -1,12 +1,13 @@
+import { LoggedOut } from "./loggedOut.js";
 
-class Main
+class Main extends LoggedOut
 {
     constructor(app) {
-        this._app = app;
+        super(app);
     }
 
     init() {
-        return true;
+        return super.init();
     }
 }
 
