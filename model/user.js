@@ -1,16 +1,13 @@
 import { StorageObject } from "../control/storageObject.js";
 
-import { Notes } from "./notes.js";
-import { DiaryNotes } from "./diaryNotes.js";
-
 class User extends StorageObject
 {
     constructor() {
         super();
         this.email = "";
         this.passwordHash = "";
-        //this.notes = notes;
-        //this.diaryNotes = diaryNotes;
+        this.notes = [];
+        this.diaryNotes = [];
         this.style = "blue";
     }
 

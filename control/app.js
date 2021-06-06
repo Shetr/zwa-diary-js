@@ -10,6 +10,9 @@ import { Logout } from "./logout.js";
 import { ChangeStyle } from "./changeStyle.js";
 
 import { User } from "../model/user.js";
+import { CustomDate } from "../model/date.js";
+import { Note } from "../model/note.js";
+import { DiaryNote } from "../model/diaryNote.js";
 
 class App
 {
@@ -19,7 +22,7 @@ class App
             login: new Login(this),
             register: new Register(this),
             diary: new Diary(this),
-            notebook: new Notebook(this),
+            /*notebook: new Notebook(this),*/
             logout: new Logout(this),
             changeStyle: new ChangeStyle(this)
         };
@@ -31,7 +34,7 @@ class App
         this.router = new Router(routes, defaultRoute);
         this.router.route();
 
-        this._users = new AppStorage("users", [User]);
+        this._users = new AppStorage("users", [User, CustomDate, Note, DiaryNote]);
         this._users.load();
 
         this.user = null;

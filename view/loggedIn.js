@@ -23,9 +23,6 @@ class LoggedInView
                     <a href="#diary" ${selectedPage == "diary" ? 'id="pageSelected"' : ""}>Diary</a>
                 </li>
                 <li>
-                    <a href="#notebook" ${selectedPage == "notebook" ? 'id="pageSelected"' : ""}>Notebook</a>
-                </li>
-                <li>
                     <a href="#changeStyle" ${selectedPage == "changeStyle" ? 'id="pageSelected"' : "" }>Change style</a>
                 </li>
             </ul>
