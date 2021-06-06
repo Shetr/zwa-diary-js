@@ -5,6 +5,20 @@ body {
     min-height: 100%;
 }
 
+:root {
+    --header-footer-color: #12146b;
+    --main-bg-color: #191c94;
+    --text-color: white;
+    --mandatory-color: #ff4e00;
+    --dark-color: #070f3d;
+    --note-color: #070f3d;
+    --note-bg-hover-color: #00a0d5;
+    --table-selected-color: #1b62c2;
+    --table-selected-hover-color: #14478c;
+    --table-button-bg-color: #00a0d5;
+    --error-color: #ff4e00;
+}
+
 html body {
     margin: 0px;
     padding: 0px;
@@ -17,7 +31,7 @@ html body {
 
 
 header {
-    background-color: #12146b;
+    background-color: var(--header-footer-color);
     
     grid-column-start: 1;
     grid-column-end: 2;
@@ -31,7 +45,7 @@ header {
 
 header h1{
     text-align: center;
-    color:white;
+    color: var(--text-color);
     font-size: 50px;
     font-family:Calibri;
     margin:0;
@@ -48,7 +62,7 @@ div#user {
     width: auto;
     margin: 10px;
     text-align: right;
-    color:white;
+    color: var(--text-color);
     font-size: 20px;
     font-family:Calibri;
     
@@ -62,8 +76,8 @@ div#user div{
     margin: 7px;
 }
 
-div#user div.odkazVzhled{
-    width: 150px;
+div#user div.styleLink{
+    width: 90px;
     margin: 0px;
     float: right;
 }
@@ -86,9 +100,9 @@ nav ul {
     padding: 0;
 }
 
-nav a {
+nav a, .navLink {
     display: block;
-    background-color: #070f3d;
+    background-color: var(--dark-color);
     color: white;
     transition: background-color linear 500ms;
     margin: 7px;
@@ -98,12 +112,12 @@ nav a {
     font-size:20px;
 }
 
-nav a:hover {
+nav a:hover, .navLink:hover {
     background-color: white;
     color: #070f3d;
 }
 
-nav a#pageSelected {
+nav a#pageSelected, .navLink#pageSelected {
     background-color: white;
     color: #10111f;
     transition: none;
@@ -111,7 +125,7 @@ nav a#pageSelected {
 
 
 main {
-    background-color: #191c94;
+    background-color: var(--main-bg-color);
     padding-top: 40px;
     padding-bottom: 40px;
 
@@ -127,8 +141,8 @@ main {
 
 
 footer {
-    background-color: #12146b;
-    color: white;
+    background-color: var(--header-footer-color);
+    color: var(--text-color);
     text-align: center;
     padding: 10px;
     
@@ -139,7 +153,7 @@ footer {
 }
 
 #dnesniDatum {
-    color:white;
+    color:var(--text-color);
     font-size: 25px;
     margin:10px;
     text-align:center;
@@ -179,11 +193,11 @@ tbody td:hover
 
 
 tbody td.vybranoTab {
-    background-color: #1b62c2;
+    background-color: var(--table-selected-color);
 }
 
 tbody td.vybranoTab:hover {
-    background-color: #14478c;
+    background-color: var(--table-selected-hover-color);
 }
 
 .deaktivovanaBunkaTab{
@@ -216,7 +230,7 @@ td div, .aktivniBunkaTab, .dnesTab, .zapisekTab, .buttonTab {
 }
 
 .dnesTab {
-    background-color: #1b62c2;
+    background-color: var(--table-selected-color);
 }
 
 .zapisekTab {
@@ -229,13 +243,13 @@ td form{
 }
 
 .buttonTab {
-    background-color: #00a0d5;
+    background-color: var(--table-button-bg-color);
     display: block;
     color: black;
 }
 
 .buttonTab:hover {
-    background-color: #070f3d;
+    background-color: var(--dark-color);
     color: white;
     cursor: pointer;
 }
@@ -248,17 +262,17 @@ form label {
     display:block;
     font-size:25px;
     margin: 10px 10px 0px 10px;
-    color: white;
+    color: var(--text-color);
 }
 
 
 form p {
     font-size:15px;
     margin: 10px;
-    color: white;
+    color: var(--text-color);
 }
 form p.error {
-    color: #ff4e00;
+    color: var(--error-color);
 }
 
 form label input {
@@ -272,7 +286,7 @@ form label input.radioBut
     display: inline;
 }
 form label input.error {
-    background-color: #ff4e00;
+    background-color: var(--error-color);
 }
 
 form textarea {
@@ -308,7 +322,7 @@ form textarea {
     font-family: Calibri;
     font-size: 20px;
     text-decoration: none;
-    background-color: #070f3d;
+    background-color: var(--dark-color);
     color: white;
 }
 
@@ -324,7 +338,7 @@ form textarea {
 }
 
 .strankovani:hover {
-    background-color: #070f3d;
+    background-color: var(--dark-color);
     color: white;
 }
 
@@ -335,7 +349,7 @@ form textarea {
     padding: 10px;
     background-color: white;
     text-decoration: none;
-    color: #070f3d;
+    color: var(--note-color);
     display: block;
     width: 500px;
 }
@@ -343,7 +357,7 @@ form textarea {
 .zapisek:hover{
     color: black;
     cursor: pointer;
-    background-color: #00a0d5;
+    background-color: var(--note-bg-hover-color);
 }
 
 .submitForm {
@@ -351,7 +365,7 @@ form textarea {
     font-size: 25px;
     margin: 10px;
     padding: 10px;
-    background-color: #070f3d;
+    background-color: var(--dark-color);
     text-decoration: none;
     color: white;
 }
@@ -359,10 +373,10 @@ form textarea {
 
 .submitForm:hover {
     background-color: white;
-    color: #070f3d;
+    color: var(--dark-color);
     cursor: pointer;
 }
 
 .mandatory {
-    color: #ff4e00;
+    color: var(--mandatory-color);
 }

@@ -12,7 +12,7 @@ class Login extends LoggedOut
         let progress = super.init();
         if(progress) {
             this._view.init();
-            this._view.getForm().addEventListener("submit", (e) => {this._submitForm(); e.preventDefault();});
+            this._view.getForm().addEventListener("submit", (e) => {e.preventDefault(); this._submitForm();});
         }
         return progress;
     }
@@ -20,14 +20,19 @@ class Login extends LoggedOut
     _submitForm() {
         let email = this._view.getEmailInput().value;
         let password = this._view.getPasswordInput().value;
-        let user = this._findUser(this._view.getEmailInput().value);
-        console.log(user);
-        /*if(user == null || (user != null && !user.doesPasswordMatch(password))) {
+        let user = this._findUser(email);
+        if(user == null) {
             this._view.setError("Incorrect email or password.");
             return;
         }
-        this._app.user = user;
-        this._app.router.routeTo("diary");*/
+        user.doesPasswordMatch(password).then((matches) => {
+            if(!matches) {
+                this._view.setError("Incorrect email or password.");
+                return;
+            }
+            this._app.user = user;
+            this._app.router.routeTo("diary");
+        });
     }
 
     _findUser(email) {

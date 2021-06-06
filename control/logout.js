@@ -8,7 +8,10 @@ class Logout extends LoggedIn
 
     init() {
         let progress = super.init();
-        return progress;
+        if(progress) {
+            this._app.user = null;
+        }
+        return false;
     }
 }
 

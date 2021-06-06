@@ -1,5 +1,6 @@
 import { Controller } from "./controller.js";
 import { LoggedOutView } from "../view/loggedOut.js";
+import { setStyle } from "../view/style.js";
 
 class LoggedOut extends Controller
 {
@@ -9,8 +10,9 @@ class LoggedOut extends Controller
     }
 
     init() {
+        setStyle("blue");
         this._loggedOutView.init(this._app.router.getActualRoute());
-        return super.init();
+        return true;
     }
 }
 

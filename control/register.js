@@ -13,10 +13,10 @@ class Register extends LoggedOut
         let progress = super.init();
         if(progress) {
             this._view.init();
-            this._view.getForm().addEventListener("submit", (e) => {this._submitForm(); e.preventDefault();});
-            this._view.getEmailInput().addEventListener("keyup", (e) => {this._validateEmail(); e.preventDefault();});
-            this._view.getPassword1Input().addEventListener("blur", (e) => {this._validatePassword1(); e.preventDefault();});
-            this._view.getPassword2Input().addEventListener("blur", (e) => {this._validatePassword2(); e.preventDefault();});
+            this._view.getForm().addEventListener("submit", (e) => {e.preventDefault(); this._submitForm();});
+            this._view.getEmailInput().addEventListener("keyup", (e) => {e.preventDefault(); this._validateEmail();});
+            this._view.getPassword1Input().addEventListener("blur", (e) => {e.preventDefault(); this._validatePassword1();});
+            this._view.getPassword2Input().addEventListener("blur", (e) => {e.preventDefault(); this._validatePassword2();});
         }
         return progress;
     }
@@ -30,11 +30,12 @@ class Register extends LoggedOut
             let email = this._view.getEmailInput().value;
             let password = this._view.getPassword1Input().value;
             let users = this._app.getUsers();
-            let user = User.createWithPassword(email, password);
-            users.getData().push(user);
-            users.save();
-            this._app.user = user;
-            this._app.router.routeTo("diary");
+            User.createWithPassword(email, password).then((user => {
+                users.getData().push(user);
+                users.save();
+                this._app.user = user;
+                this._app.router.routeTo("diary");
+            }));
         }
     }
 

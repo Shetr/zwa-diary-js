@@ -2,25 +2,28 @@ import { StorageObject } from "../control/storageObject.js";
 
 import { Notes } from "./notes.js";
 import { DiaryNotes } from "./diaryNotes.js";
-import { Style } from "./style.js";
 
 class User extends StorageObject
 {
-    constructor(email, passwordHash) {
+    constructor() {
         super();
-        this.email = email;
-        this.passwordHash = passwordHash;
+        this.email = "";
+        this.passwordHash = "";
         //this.notes = notes;
         //this.diaryNotes = diaryNotes;
-        //this.style = style;
+        this.style = "blue";
     }
 
-    static createWithPassword(email, password) {
-        return new User(email, password);
+    async doesPasswordMatch(password) {
+        let passwordHash = await createHash(password);
+        return this.passwordHash == passwordHash;
     }
 
-    doesPasswordMatch(password) {
-        return this.passwordHash == password;
+    static async createWithPassword(email, password) {
+        let user = new User();
+        user.email = email;
+        user.passwordHash = await createHash(password); 
+        return user;
     }
 
     static isEmailIncorrect(email) {
@@ -42,7 +45,16 @@ class User extends StorageObject
         }
         return "";
     }
-
 }
+    
+async function createHash(password) {
+    // copied from mdn
+    const msgUint8 = new TextEncoder().encode(password);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8).then();
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    return hashHex;
+}
+
 
 export { User };

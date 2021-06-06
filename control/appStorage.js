@@ -21,7 +21,8 @@ class AppStorage
         } else {
             this.data = JSON.parse(rawData, (key, value) => {
                 if(typeof value === 'object' && "_class" in value) {
-                    return Object.assign(this.storedClasses[value._class], value);
+                    let newObject = new this.storedClasses[value._class]();
+                    return Object.assign(newObject, value);
                 }
                 else {
                     return value;
