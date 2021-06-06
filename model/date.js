@@ -108,6 +108,9 @@ class CustomDate extends StorageObject
         return this.day == date.day && this.month == date.month && this.year == date.year;
     }
 
+    makeCopy() {
+        return CustomDate.createDate(this.day, this.month, this.year);
+    }
 }
 
 export { CustomDate };

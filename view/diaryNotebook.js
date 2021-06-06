@@ -23,10 +23,14 @@ class DiaryNoteView
     createNote() {
         this._diaryNoteWrapperEl.innerHTML = this._createNote();
         this._initFormData("", "");
+        this._nameEl.addEventListener("blur", e => this.clearErrors());
+        this._descriptionEl.addEventListener("blur", e => this.clearErrors());
     }
     changeNote(name, description) {
         this._diaryNoteWrapperEl.innerHTML = this._changeNote();
         this._initFormData(name, description);
+        this._nameEl.addEventListener("blur", e => this.clearErrors());
+        this._descriptionEl.addEventListener("blur", e => this.clearErrors());
     }
     existingNote(name, description) {
         this._diaryNoteWrapperEl.innerHTML = this._existingNote();
@@ -37,16 +41,14 @@ class DiaryNoteView
         this._descriptionEl = document.querySelector("textarea#description");
         this._errorEl = document.querySelector("p.error");
         this._nameEl.value = name;
-        this._descriptionEl.textContent = description;
-        this._nameEl.addEventListener("blur", e => this.clearErrors());
-        this._descriptionEl.addEventListener("blur", e => this.clearErrors());
+        this._descriptionEl.value = description;
     }
 
     getNameInput() {
         return this._nameEl.value;
     }
     getDescriptionInput() {
-        return this._descriptionEl.textContent;
+        return this._descriptionEl.value;
     }
 
 

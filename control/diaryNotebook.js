@@ -13,12 +13,12 @@ class DiaryNotebook extends Controller
 
     init() {
         this._view.init();
+        this.update();
         return true;
     }
 
     update() {
         let selectedDay = this._calendar.getSelectedDay();
-        let date = this._calendar.getDate();
         if(selectedDay == -1) {
             this._view.clearNote();
             return;
@@ -29,6 +29,14 @@ class DiaryNotebook extends Controller
         } else {
             this._view.existingNote(note.name, note.description);
         }
+        let date = this._calendar.getDate().makeCopy();
+        this._calendar.noteDays = this._app.user.diaryNotes
+            .filter(note => note.date.month == date.month)
+            .map(note => note.date.day);
+        if(this._calendar.noteDays == undefined) {
+            this._calendar.noteDays = [];
+        }
+        this._calendar.update();
     }
 
     submitForm(submitter) {
@@ -37,14 +45,11 @@ class DiaryNotebook extends Controller
             this._view.clearNote();
             return;
         }
-        if(submitter.name == "selectDay" || submitter.name == "cancel") {
-            this.update();
-        }
-        else if(submitter.name == "createNote") {
+        if(submitter.name == "createNote") {
             this._view.createNote();
         }
         else if(submitter.name == "create" || submitter.name == "safeChanges") {
-            let date = this._calendar.getDate();
+            let date = this._calendar.getDate().makeCopy();
             let name = this._view.getNameInput();
             let description = this._view.getDescriptionInput();
             this._view.clearErrors();
@@ -58,7 +63,7 @@ class DiaryNotebook extends Controller
                 this._view.setDescriptionError(isIncorrect);
                 return;
             }
-            let note = DiaryNote.createDiaryNote(date, name, description);
+            let note = DiaryNote.createDiaryNote(date.makeCopy(), name, description);
             let diaryNotes = this._app.user.diaryNotes;
             let index = diaryNotes.findIndex((diaryNote) => date.compare(diaryNote.date));
             if(index < 0) {
@@ -67,6 +72,7 @@ class DiaryNotebook extends Controller
                 diaryNotes[index] = note;
             }
             this._app._users.save();
+            this.update();
         }
         else if(submitter.name == "change") {
             let note = this._findNote();
@@ -75,10 +81,13 @@ class DiaryNotebook extends Controller
             }
         }
         else if(submitter.name == "delete") {
-            let date = this._calendar.getDate();
+            let date = this._calendar.getDate().makeCopy();
             let diaryNotes = this._app.user.diaryNotes;
-            this._app.user.diaryNotes = diaryNotes.filter((diaryNote) => diaryNote.date != date);
+            this._app.user.diaryNotes = diaryNotes.filter((diaryNote) => !diaryNote.date.compare(date));
             this._app._users.save();
+            this.update();
+        } else {
+            this.update();
         }
     }
 

@@ -1,0 +1,9 @@
+
+Na úvodní stránce je kalendář ve kterém se dá přesouvat mezi měsíci.
+Na levé straně je navigace kde se lze přihlásit nebo registrovat.
+
+Po přihlášení je k dispozici diář do kterého se ke dnům dají přidávat zápisky.
+Po kliknutí na den se pod kalendářem zobprazí možnost přidání zápisku. 
+Zápisky je poté možno upravovat, tiskonout a odstraňovat. 
+
+Dále je zde v navigaci možnost změny vzhledu. Jsou k dispozici 2 vzhledy.

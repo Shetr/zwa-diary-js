@@ -9,13 +9,18 @@ class Calendar extends Controller
         this._view = new CalendarView();
         this._selectedDay = -1;
         this._date = null;
+        this.noteDays = [];
     }
 
     init() {
         this._selectedDay = -1;
         this._date = CustomDate.createCurrentDate();
-        this._view.init(this._date, this._selectedDay);
+        this._view.init(this._date, this._selectedDay, this.noteDays);
         return true;
+    }
+
+    update() {
+        this._view.init(this._date, this._selectedDay, this.noteDays);
     }
 
     getSelectedDay() {
@@ -36,11 +41,11 @@ class Calendar extends Controller
         } else if(submitter.name == "changeMonthLeft") {
             this._selectedDay = -1;
             this._date.dencrementMonth();
-            this._view.init(this._date, this._selectedDay);
+            this._view.init(this._date, this._selectedDay, this.noteDays);
         } else if(submitter.name == "changeMonthRight") {
             this._selectedDay = -1;
             this._date.incrementMonth();
-            this._view.init(this._date, this._selectedDay);
+            this._view.init(this._date, this._selectedDay, this.noteDays);
         }
     }
 }

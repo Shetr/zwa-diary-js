@@ -7,13 +7,13 @@ class CalendarView
         this._calendarBodyEl = null;
     }
 
-    init(date, selectedDay) {
+    init(date, selectedDay, noteDays) {
 
         this._calendarWrapperEl = document.getElementById("calendar");
         this._calendarWrapperEl.innerHTML = this._calendar(date);
 
         this._calendarBodyEl = document.querySelector("tbody");
-        this._calendarBodyEl.innerHTML = this._calendarBody(date, selectedDay, []);
+        this._calendarBodyEl.innerHTML = this._calendarBody(date, selectedDay, noteDays);
     }
 
     selectCell(dayIndex) {
