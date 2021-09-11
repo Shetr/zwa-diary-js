@@ -34,7 +34,7 @@ class App
         this.router = new Router(routes, defaultRoute);
         this.router.route();
 
-        this._users = new AppStorage("users", [User, CustomDate, Note, DiaryNote]);
+        this._users = new AppStorage("zwa-diary-js-users", [User, CustomDate, Note, DiaryNote]);
         this._users.load();
 
         this.user = null;
